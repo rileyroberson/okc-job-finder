@@ -5,73 +5,61 @@ const DISTRICTS = [
     name: 'Oklahoma City Public Schools',
     note: 'Largest district in OKC — frequently posts paraprofessional and TA openings',
     url: 'https://www.applitrack.com/okcps/onlineapp/default.aspx',
-    search: 'https://www.applitrack.com/okcps/onlineapp/default.aspx?all=1&KeyWords=paraprofessional',
   },
   {
     name: 'Putnam City Schools',
     note: 'NW OKC — large district, regular para openings',
     url: 'https://www.applitrack.com/putnamcity/onlineapp/',
-    search: 'https://www.applitrack.com/putnamcity/onlineapp/default.aspx?all=1&KeyWords=paraprofessional',
   },
   {
     name: 'Edmond Public Schools',
     note: 'North OKC metro — competitive pay, high demand for classroom support',
     url: 'https://www.edmondschools.net/departments/human-resources/employment/',
-    search: 'https://www.applitrack.com/edmondps/onlineapp/default.aspx?all=1&KeyWords=paraprofessional',
   },
   {
     name: 'Moore Public Schools',
     note: 'South OKC metro — frequently hiring instructional assistants',
     url: 'https://www.mooreschools.com/cms/one.aspx?portalId=93220&pageId=96590',
-    search: 'https://www.applitrack.com/mooreschools/onlineapp/default.aspx?all=1&KeyWords=paraprofessional',
   },
   {
     name: 'Midwest City–Del City Schools',
     note: 'East metro — look for Educational Technician and Para listings',
     url: 'https://www.mid-del.net/domain/24',
-    search: 'https://www.applitrack.com/midwestcity/onlineapp/default.aspx?all=1&KeyWords=paraprofessional',
   },
   {
     name: 'Mustang Public Schools',
     note: 'SW metro growth area — active hiring',
     url: 'https://www.mustangps.org/departments/human_resources/employment_opportunities',
-    search: 'https://www.applitrack.com/mustang/onlineapp/default.aspx?all=1&KeyWords=paraprofessional',
   },
   {
     name: 'Yukon Public Schools',
     note: 'West OKC — smaller district, check for support staff openings',
     url: 'https://www.yukonps.com/page/human-resources',
-    search: null,
   },
   {
     name: 'Deer Creek Schools',
     note: 'North metro — growing district with newer facilities',
     url: 'https://www.dcsok.org/page/employment',
-    search: null,
   },
   {
     name: 'Western Heights Public Schools',
     note: 'West OKC — smaller district with community-focused programs',
     url: 'https://www.westernheights.k12.ok.us/page/employment',
-    search: null,
   },
   {
     name: 'Choctaw-Nicoma Park Schools',
     note: 'East OKC metro — check support staff listings',
     url: 'https://www.cnpschools.org/page/human-resources',
-    search: null,
   },
   {
     name: 'Crooked Oak Public Schools',
     note: 'South OKC — smaller district, call HR directly if no online posting',
     url: 'https://www.crookedoak.k12.ok.us/',
-    search: null,
   },
   {
     name: 'Luther Public Schools',
     note: 'NE metro — rural adjacent, check for para support roles',
     url: 'https://www.lutherps.org/',
-    search: null,
   },
 ]
 
@@ -136,7 +124,7 @@ const PRIVATE_ORGS = [
   },
 ]
 
-function LinkCard({ name, note, url, search }) {
+function LinkCard({ name, note, url }) {
   return (
     <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
       <div className="flex items-start justify-between gap-2">
@@ -145,7 +133,7 @@ function LinkCard({ name, note, url, search }) {
           <p className="text-gray-500 text-xs mt-0.5">{note}</p>
         </div>
       </div>
-      <div className="mt-3 flex gap-2 flex-wrap">
+      <div className="mt-3">
         <a
           href={url}
           target="_blank"
@@ -154,16 +142,6 @@ function LinkCard({ name, note, url, search }) {
         >
           Visit Jobs Page
         </a>
-        {search && (
-          <a
-            href={search}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs border border-[#003087] text-[#003087] px-3 py-1.5 rounded hover:bg-blue-50 transition-colors"
-          >
-            Search Paraprofessional
-          </a>
-        )}
       </div>
     </div>
   )
