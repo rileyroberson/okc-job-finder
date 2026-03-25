@@ -112,18 +112,31 @@ export default function CoverLetter() {
       {/* Dos and don'ts */}
       <section>
         <h3 className="text-base font-bold text-gray-800 mb-3">Do's and Don'ts</h3>
+        {/* Two-column on sm+, stacked on mobile */}
         <div className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
-          <div className="grid grid-cols-2 bg-gray-50 border-b border-gray-200">
+          <div className="hidden sm:grid grid-cols-2 bg-gray-50 border-b border-gray-200">
             <div className="px-4 py-2 text-xs font-bold text-green-700 uppercase tracking-wide">Do</div>
             <div className="px-4 py-2 text-xs font-bold text-red-600 uppercase tracking-wide border-l border-gray-200">Don't</div>
           </div>
           {DOS_DONTS.map(({ do: d, dont }) => (
-            <div key={d} className="grid grid-cols-2 border-b border-gray-100 last:border-0">
-              <div className="px-4 py-3 text-sm text-gray-700 flex gap-2">
-                <span className="text-green-500 shrink-0">✓</span>{d}
+            <div key={d} className="border-b border-gray-100 last:border-0">
+              {/* Mobile: stacked */}
+              <div className="sm:hidden px-4 py-3 space-y-2">
+                <div className="flex gap-2 text-sm text-gray-700">
+                  <span className="text-green-500 shrink-0">✓</span>{d}
+                </div>
+                <div className="flex gap-2 text-sm text-gray-500">
+                  <span className="text-red-400 shrink-0">✕</span>{dont}
+                </div>
               </div>
-              <div className="px-4 py-3 text-sm text-gray-700 border-l border-gray-100 flex gap-2">
-                <span className="text-red-400 shrink-0">✕</span>{dont}
+              {/* Desktop: side by side */}
+              <div className="hidden sm:grid grid-cols-2">
+                <div className="px-4 py-3 text-sm text-gray-700 flex gap-2">
+                  <span className="text-green-500 shrink-0">✓</span>{d}
+                </div>
+                <div className="px-4 py-3 text-sm text-gray-700 border-l border-gray-100 flex gap-2">
+                  <span className="text-red-400 shrink-0">✕</span>{dont}
+                </div>
               </div>
             </div>
           ))}
@@ -155,7 +168,7 @@ export default function CoverLetter() {
             Copy Template
           </button>
         </div>
-        <pre className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-sm text-gray-700 whitespace-pre-wrap font-mono">
+        <pre className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-xs sm:text-sm text-gray-700 whitespace-pre-wrap font-mono overflow-x-auto">
           {TEMPLATE}
         </pre>
       </section>

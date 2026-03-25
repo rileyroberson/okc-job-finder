@@ -96,7 +96,7 @@ export default function DistrictMap() {
       <MapContainer
         center={[35.50, -97.52]}
         zoom={10}
-        style={{ height: '420px', width: '100%' }}
+        style={{ height: 'clamp(260px, 50vw, 420px)', width: '100%' }}
         scrollWheelZoom={false}
       >
         <TileLayer

@@ -11,7 +11,7 @@ const TABS = [
   { id: 'resume',    label: 'Resume Tips' },
   { id: 'cover',     label: 'Cover Letter' },
   { id: 'interview', label: 'Interview Prep' },
-  { id: 'checklist', label: 'App Checklist' },
+  { id: 'checklist', label: 'Checklist' },
   { id: 'certs',     label: 'Certs & Pay' },
 ]
 
@@ -22,23 +22,25 @@ export default function App() {
     <div className="min-h-screen flex flex-col bg-gray-50">
       {/* Header */}
       <header className="bg-[#003087] text-white shadow-md">
-        <div className="max-w-5xl mx-auto px-4 py-4">
-          <h1 className="text-xl font-bold tracking-tight">OKC Paraprofessional & Teacher Assistant Jobs</h1>
-          <p className="text-blue-200 text-sm mt-0.5">Your job search toolkit — OKC metro area</p>
+        <div className="max-w-5xl mx-auto px-4 py-3">
+          <h1 className="text-base sm:text-xl font-bold tracking-tight leading-snug">
+            OKC Paraprofessional &amp; Teacher Assistant Jobs
+          </h1>
+          <p className="text-blue-200 text-xs sm:text-sm mt-0.5">Your job search toolkit — OKC metro area</p>
         </div>
       </header>
 
-      {/* Tab bar — scrollable on mobile */}
-      <nav className="bg-white border-b border-gray-200 shadow-sm overflow-x-auto">
-        <div className="max-w-5xl mx-auto px-4 flex gap-0 min-w-max">
+      {/* Tab bar — scrollable, hidden scrollbar */}
+      <nav className="bg-white border-b border-gray-200 shadow-sm overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex min-w-max px-2 sm:px-4">
           {TABS.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-4 py-3 text-sm font-medium border-b-2 whitespace-nowrap transition-colors ${
+              className={`px-3 sm:px-4 py-3 text-xs sm:text-sm font-medium border-b-2 whitespace-nowrap transition-colors min-h-[44px] ${
                 activeTab === tab.id
                   ? 'border-[#003087] text-[#003087]'
-                  : 'border-transparent text-gray-600 hover:text-[#003087] hover:border-blue-200'
+                  : 'border-transparent text-gray-600 active:text-[#003087]'
               }`}
             >
               {tab.label}
@@ -48,7 +50,7 @@ export default function App() {
       </nav>
 
       {/* Content */}
-      <main className="flex-1 max-w-5xl mx-auto w-full px-4 py-6">
+      <main className="flex-1 max-w-5xl mx-auto w-full px-3 sm:px-4 py-4 sm:py-6">
         {activeTab === 'jobs'      && <FindJobs />}
         {activeTab === 'resume'    && <ResumeTips />}
         {activeTab === 'cover'     && <CoverLetter />}
@@ -57,7 +59,7 @@ export default function App() {
         {activeTab === 'certs'     && <CertsAndPay />}
       </main>
 
-      <footer className="bg-white border-t border-gray-200 text-center text-xs text-gray-400 py-3">
+      <footer className="bg-white border-t border-gray-200 text-center text-xs text-gray-400 py-3 px-4">
         Links open the official employer sites. Verify postings are still active before applying.
       </footer>
     </div>

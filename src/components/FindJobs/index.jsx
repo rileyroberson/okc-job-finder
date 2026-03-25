@@ -124,25 +124,77 @@ const PRIVATE_ORGS = [
   },
 ]
 
+const CHRISTIAN_SCHOOLS = [
+  {
+    name: 'Heritage Hall School',
+    note: 'PreK–12 independent Christian school in OKC — well-regarded, competitive staff',
+    url: 'https://www.heritagehall.com/about/employment',
+  },
+  {
+    name: 'Oklahoma Christian School',
+    note: 'Edmond — K–12 Church of Christ affiliated, strong community culture',
+    url: 'https://www.ocschool.org/about/employment',
+  },
+  {
+    name: 'Casady School',
+    note: 'Episcopal PreK–12 in OKC — strong support staff program',
+    url: 'https://www.casady.org/about/employment',
+  },
+  {
+    name: 'Mount St. Mary Catholic High School',
+    note: 'Catholic high school in OKC — check for TA and instructional support roles',
+    url: 'https://www.msmary.net/about/employment',
+  },
+  {
+    name: 'Bishop McGuinness Catholic High School',
+    note: 'Catholic high school in OKC — Archdiocese of OKC positions listed through diocesan site',
+    url: 'https://www.archokc.org/schools/employment',
+  },
+  {
+    name: 'Christ the King Catholic School',
+    note: 'Catholic K–8 in OKC — Archdiocese of OKC, check diocesan employment page',
+    url: 'https://www.archokc.org/schools/employment',
+  },
+  {
+    name: 'Archdiocese of Oklahoma City — All Catholic Schools',
+    note: 'Central listing for all OKC-area Catholic school openings including support staff',
+    url: 'https://www.archokc.org/schools/employment',
+  },
+  {
+    name: 'Cornerstone Christian School',
+    note: 'K–12 in Edmond — nondenominational Christian, regularly hires classroom support',
+    url: 'https://www.cornerstonechristian.net/employment',
+  },
+  {
+    name: 'Westminster School (Presbyterian)',
+    note: 'PreK–12 in OKC — Presbyterian affiliation, strong academic program',
+    url: 'https://www.westminster-ok.org/about/employment',
+  },
+  {
+    name: 'Crossings Christian School',
+    note: 'K–12 in Oklahoma City — evangelical Christian, growing enrollment',
+    url: 'https://www.crossingschristian.com/employment',
+  },
+  {
+    name: 'Epic Charter Schools',
+    note: 'Statewide online/hybrid charter — not faith-based but frequently hires support staff across OKC metro',
+    url: 'https://www.epiccharterschools.org/careers',
+  },
+]
+
 function LinkCard({ name, note, url }) {
   return (
     <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
-      <div className="flex items-start justify-between gap-2">
-        <div>
-          <p className="font-semibold text-gray-900 text-sm">{name}</p>
-          <p className="text-gray-500 text-xs mt-0.5">{note}</p>
-        </div>
-      </div>
-      <div className="mt-3">
-        <a
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-xs bg-[#003087] text-white px-3 py-1.5 rounded hover:bg-blue-800 transition-colors"
-        >
-          Visit Jobs Page
-        </a>
-      </div>
+      <p className="font-semibold text-gray-900 text-sm">{name}</p>
+      <p className="text-gray-500 text-xs mt-0.5">{note}</p>
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-3 block w-full text-center text-sm font-medium bg-[#003087] text-white px-3 py-2.5 rounded-lg active:bg-blue-900 transition-colors"
+      >
+        Visit Jobs Page
+      </a>
     </div>
   )
 }
@@ -192,6 +244,19 @@ export default function FindJobs() {
         </p>
         <div className="grid gap-3 sm:grid-cols-2">
           {PRIVATE_ORGS.map((d) => <LinkCard key={d.name} {...d} />)}
+        </div>
+      </section>
+
+      <section>
+        <h3 className="text-base font-bold text-gray-800 mb-3 flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-purple-600 inline-block" />
+          Christian &amp; Private Schools
+        </h3>
+        <p className="text-xs text-gray-500 mb-3">
+          Private and faith-based schools often hire paraprofessionals and TAs independently — check their sites directly as they don't always post to general job boards.
+        </p>
+        <div className="grid gap-3 sm:grid-cols-2">
+          {CHRISTIAN_SCHOOLS.map((d) => <LinkCard key={d.name} {...d} />)}
         </div>
       </section>
 

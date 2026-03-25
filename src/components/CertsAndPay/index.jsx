@@ -161,7 +161,19 @@ export default function CertsAndPay() {
         <p className="text-xs text-gray-500 mb-3">
           Ranges are estimates based on publicly available salary schedules. Verify current rates directly with district HR.
         </p>
-        <div className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+        {/* Mobile: cards. Desktop: table */}
+        <div className="sm:hidden space-y-2">
+          {PAY_RANGES.map(({ district, range, note }) => (
+            <div key={district} className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
+              <div className="flex items-start justify-between gap-2">
+                <p className="font-medium text-gray-900 text-sm">{district}</p>
+                <span className="font-bold text-green-700 text-sm shrink-0">{range}</span>
+              </div>
+              <p className="text-xs text-gray-500 mt-1">{note}</p>
+            </div>
+          ))}
+        </div>
+        <div className="hidden sm:block bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
           <table className="w-full text-sm">
             <thead className="bg-gray-50 border-b border-gray-200">
               <tr>
